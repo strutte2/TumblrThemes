@@ -2,6 +2,9 @@
 <html lang="en"> 
 <head>
 <meta charset="utf-8"/>
+
+<title>{Title}</title>
+
 <!-- User Defined Colors --> 
 <meta name="color:Text" content="#61473a" />
 <meta name="color:HighLight" content="#2f8dca" />
@@ -21,6 +24,22 @@
 <!-- User Defined Pages --> 
 <meta name="text:Page1" content="Resume" />
 <meta name="text:Page2" content="Contact" /> 
+
+<!-- User Defined Font Sizes --> 
+<meta name="text:TitleFontSize" content="60px" />
+<meta name="text:HeaderFontSize" content="30px" />
+<meta name="text:TextFontSize" content="24px" />
+<meta name="text:TagFontSize" content="20px" />
+<meta name="text:ButtonFontSize" content="30px" />
+
+<!-- User Defined Booleans -->
+<meta name="if:ShowHeaderDate" content="1" />
+<!-- Note!
+
+If Use Custom Pages is enabled, the pages must be added on Tumblr's customize page via the "Add Page" feature at the bottom. The name of the page must match the name of the custom user input fields or the links will point to the incorrect page.
+
+-->
+<meta name="if:UseCustomPages" content="1" /> 
 
 <!-- Begin CSS -->
 <style type="text/css">
@@ -42,10 +61,9 @@ p {
     padding: 10px;
 }
 h3 {
-    font-size: 26px;
+    font-size: {text:HeaderFontSize};
     padding: 0;
 }
-
 #footer {
     margin-bottom: 1em;
     text-align: center;
@@ -77,6 +95,16 @@ h3 {
     width: max-content;
     position: relative;
 }
+.home {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.buttons a {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 .buttons {
     margin: 0;
     padding: 0;
@@ -88,13 +116,13 @@ h3 {
     flex-direction: row;
     flex-wrap: wrap;
 }
-.buttons a {
+.ulbuttons a {
     background-color: {color:Text};
     border-radius: 25px;
     padding: 5px 10px;
     text-decoration: none;
     font-family: {text:GoogleFont3};
-    font-size: 25px;
+    font-size: {text:ButtonFontSize};
     color: {color:HeaderBackground};
     width: 4em;
     -webkit-transition: 0.3s;
@@ -103,7 +131,7 @@ h3 {
     line-height: 1;
     margin: 10px;
 }
-.buttons a:hover {
+.ulbuttons a:hover {
     background-color: {BackGroundColor};
     color: {color:HighLight};
 }
@@ -120,7 +148,7 @@ h3 {
 .title {
     color: {color:Text};
     font-family: {text:GoogleFont};
-    font-size: 60px;
+    font-size: {text:TitleFontSize};
     line-height: 1;
     padding: 10px;
     text-align: center;
@@ -160,7 +188,7 @@ h3 {
     border: 5px solid {color:Accent};
     box-shadow: -3px 3px 3px {color:Text};
     color: {color:Text};
-    font-size: 22px;
+    font-size: {text:TextFontSize};
 }
 .posttitle {
     position: absolute;
@@ -187,7 +215,7 @@ h3 {
     margin: auto;
 }
 .source {
-    padding: 5px;
+    padding: 10px;
     margin-left: .5em;
 }
 .chat {
@@ -205,7 +233,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    font-size: 16px;
+    font-size: {text:TagFontSize};
     opacity: 0.7;
     color: {color:Accent};
     
@@ -229,36 +257,43 @@ body > iframe:first-child {
 </style>
 <!-- End CSS -->
 
-    <title>{Title}</title>
-  </head>
+
+
+</head>
 <!-- Below is the Body
-The Navigation List is repeated so the flow will start below the fixed header wrapper. -->
+The Navigation List is repeated so the flow will dynamically start below the fixed header wrapper. -->
 <body>
- <header>
-  <div class="navigation">
-    <div class="buttons">
-      <h1 class="title">{Title}</h1>
-      <ul class="ulbuttons">
-        <li><a href="/">Blog</a></li>
-        <li><a href="/{text:Page1}">{text:Page1}</a></li>
-        <li><a href="/{text:Page2}">{text:Page2}</a></li>
-
-      </ul>
-    </div>
-  </div>
-
-<div class="navigation2">
-    <div class="buttons">
-      <h1 class="title">{Title}</h1>
-      <ul class="ulbuttons">
-        <li><a href="/">Blog</a></li>
-        <li><a href="/{text:Page1}">{text:Page1}</a></li>
-        <li><a href="/{text:Page2}">{text:Page2}</a></li>
-
-      </ul>
-    </div>
-  </div>
-</header>
+    <header>
+        <div class="navigation">
+            <div class="buttons">
+                <h1 class="title">
+                    <a href="/" class="home">{Title}</a>
+                </h1>
+                {block:IfUseCustomPages}
+                <ul class="ulbuttons">
+                    <li><a href="/">Blog</a></li>
+                    <li><a href="/{text:Page1}">{text:Page1}</a></li>
+                    <li><a href="/{text:Page2}">{text:Page2}</a></li>
+                </ul>
+                {/block:IfUseCustomPages}
+            </div>
+        </div>
+        <div class="navigation2">
+            <div class="buttons">
+                <h1 class="title">
+                    {Title}
+                </h1>
+                </a>
+                {block:IfUseCustomPages}
+                    <ul class="ulbuttons">
+                        <li><a href="/">Blog</a></li>
+                        <li><a href="/{text:Page1}">{text:Page1}</a></li>
+                        <li><a href="/{text:Page2}">{text:Page2}</a></li>
+                    </ul>
+              {/block:IfUseCustomPages}
+            </div>
+        </div>
+    </header>
         <ul id="posts">
             {block:Posts}
 <!-- Begin Text Post -->
@@ -267,10 +302,10 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                         {block:Title}
                             <h3 class="posttitle">
                                 <a href="{Permalink}">
-                                    {Title} - 
-                                        {block:Date}
-                                            {MonthNumber}/{DayOfMonth}/{ShortYear}
-                                        {/block:Date}
+                                    - {Title} - 
+                                        {blocK:IfShowHeaderDate}{block:Date}
+                                            {MonthNumber}/{DayOfMonth}/{ShortYear} -
+                                        {/block:Date}{/block:IfShowHeaderDate}
                                 </a>
                             </h3>
                         {/block:Title}
@@ -286,18 +321,27 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Text}
 <!-- End Text begin Photo Block -->
                 {block:Photo}
                     <li class="post photo">
-                        <h3 class="posttitle"><div class="align">
+                        {block:IfShowHeaderDate}<h3 class="posttitle"><div class="align">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}
                                 </a></div>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                         <div class="center buffer">
                             <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
                         </div>
@@ -313,18 +357,27 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Photo}
 <!-- End Photo, Begin Panorama Post -->
                 {block:Panorama}
                     <li class="post panorama">
-                        <h3 class="posttitle">
+                        {block:IfShowHeaderDate}<h3 class="posttitle">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}
                             </a>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                         {LinkOpenTag}
                         <div class="center buffer">
                             <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
@@ -349,13 +402,13 @@ The Navigation List is repeated so the flow will start below the fixed header wr
 <!-- End Panorama, Begin Photoset -->
                 {block:Photoset}
                     <li class="post photoset">
-                        <h3 class="posttitle">
+                        {block:IfShowHeaderDate}<h3 class="posttitle">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}
                             </a>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                         <div class="center buffer">
                             {Photoset-500}
                         </div>
@@ -373,18 +426,27 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Photoset}
 <!-- End Photoset, begin Quote --> 
                 {block:Quote}
                     <li class="post quote">
-                        <h3 class="posttitle">
+                        {block:IfShowHeaderDate}<h3 class="posttitle">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}
                             </a>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                         <div class="buffer">
                             "{Quote}"
                         </div>
@@ -400,6 +462,15 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Quote}
 <!-- End Quote, begin Link -->
@@ -407,10 +478,10 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                     <li class="post link">
                         <h3 class="posttitle">
                             <a href="{URL}" class="link">
-                                {Name} - 
-                                    {block:Date}
+                               - {Name} - 
+                                    {block:IfShowHeaderDate}{block:Date}
                                         {MonthNumber}/{DayOfMonth}/{ShortYear}
-                                    {/block:Date}
+                                    {/block:Date} - {/block:IFShowHeaderDate}
                             </a>
                         </h3>
                         {block:Description}
@@ -425,6 +496,15 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Link}
 <!-- End Link, Begin Chat --> 
@@ -433,10 +513,10 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                         {block:Title}
                             <h3 class="posttitle">
                                 <a href="{Permalink}">
-                                    {Title} - 
-                                        {block:Date}
-                                            {MonthNumber}/{DayOfMonth}/{ShortYear}
-                                        {/block:Date}
+                                   - {Title} - 
+                                        {block:IfShowHeaderDate}{block:Date}
+                                            {MonthNumber}/{DayOfMonth}/{ShortYear} -
+                                        {/block:Date}{/block:IfShowHeaderDate}
                                 </a>
                             </h3>
                         {/block:Title}
@@ -463,18 +543,27 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Chat}
 <!-- End Chat, Begin Video -->                 
                 {block:Video}
                     <li class="post video">
-                        <h3 class="posttitle">
+                        {block:IfShowHeaderDate}<h3 class="posttitle">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}    
                             </a>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                             <div class="center buffer">
                                 {Video-500}
                             </div>
@@ -490,18 +579,27 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Video}
 <!-- End Video, begin Audio -->                 
                 {block:Audio}
                     <li class="post audio">
-                        <h3 class="posttitle">
+                        {block:IfShowHeaderDate}<h3 class="posttitle">
                             <a href="{Permalink}">
                                 {block:Date}
                                     {MonthNumber}/{DayOfMonth}/{ShortYear}
                                 {/block:Date}
                             </a>
-                        </h3>
+                        </h3>{/block:IfShowHeaderDate}
                         <div class="center buffer">
                             {AudioEmbed}
                         </div>
@@ -517,12 +615,17 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                                 {/block:Tags}
                             </ul>
                         {/block:HasTags}
+                        {block:HasNotes}
+                            <ul class="tags">Notes:
+                                <li>
+                                    <a href="{Permalink}">
+                                        {NoteCountWithLabel}
+                                    </a>
+                                </li>
+                            </ul>
+                        {/block:HasNotes}
                     </li>
                 {/block:Audio}
-                {block:NoteCount}
-                {NoteCount}
-                {/block:NoteCount}
-                
             {/block:Posts}
         </ul>
 <!-- End Posts -->
@@ -532,7 +635,7 @@ The Navigation List is repeated so the flow will start below the fixed header wr
                 <a href="{PreviousPage}">Previous</a>
             {/block:PreviousPage}
             
-            | <a href="/">Blog</a> | <a href="/{text:Page1}">{text:Page1}</a> | <a href="/{text:Page2}">{text:Page2}</a> | <a href="/archive">Archive</a> |
+            | {block:IfUseCustomPages}<a href="/">Blog</a> | <a href="/{text:Page1}">{text:Page1}</a> | <a href="/{text:Page2}">{text:Page2}</a> | {/block:IfUseCustomPages} <a href="/archive">Archive</a> |
             
             {block:NextPage}
                 <a href="{NextPage}">Next &#187;</a>
