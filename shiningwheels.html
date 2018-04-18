@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8"/>
+<!-- User Defined Colors --> 
+<meta name="color:Text" content="#61473a" />
+<meta name="color:HighLight" content="#2f8dca" />
+<meta name="color:Accent" content="#ff8f24" />
+<meta name="color:HeaderBackground" content="#FEAE37" />
+<!-- End User Defined Colors --> 
+
+<!-- User Defined Fonts --> 
+<meta name="text:GoogleFont" content="Bungee Shade" />
+<link href="https://fonts.googleapis.com/css?family={text:GoogleFont}" rel="stylesheet">
+<meta name="text:GoogleFont2" content="Bungee" />
+<link href="https://fonts.googleapis.com/css?family={text:GoogleFont2}" rel="stylesheet">
+<meta name="text:GoogleFont3" content="Passion One" />
+<link href="https://fonts.googleapis.com/css?family={text:GoogleFont3}" rel="stylesheet">
+<!-- End User Fonts -->
+
+<!-- User Defined Pages --> 
+<meta name="text:Page1" content="Resume" />
+<meta name="text:Page2" content="Contact" /> 
+
+<!-- Begin CSS -->
+<style type="text/css">
+body {
+    background-color:  {BackgroundColor};
+    color: {color:Text};
+    margin-top: 1em;
+}
+a {
+    -webkit-transition: 0.3s;
+    text-decoration: none;
+    color: {color:Text};
+}
+a:hover {
+    color: {BackgroundColor};
+}
+p {
+    margin: 0;
+    padding: 10px;
+}
+h3 {
+    font-size: 26px;
+    padding: 0;
+}
+
+#footer {
+    margin-bottom: 1em;
+    text-align: center;
+}
+.navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: {color:HeaderBackground};
+    border-bottom: 10px solid {color:Accent};
+    box-shadow: 0 10px 0 {color:Text};
+    padding: 10px;
+    z-index: 1;
+}
+.navigation2 {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #feae37;
+    border-bottom: 10px solid {color:Accent};
+    box-shadow: 0 10px 0 {color:Text};
+    padding: 10px;
+    visibility: hidden;
+}
+.align {
+    vertical-align: middle;
+    width: max-content;
+    position: relative;
+}
+.buttons {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.buttons a {
+    background-color: {color:Text};
+    border-radius: 25px;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-family: {text:GoogleFont3};
+    font-size: 25px;
+    color: {color:HeaderBackground};
+    width: 4em;
+    -webkit-transition: 0.3s;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    margin: 10px;
+}
+.buttons a:hover {
+    background-color: {BackGroundColor};
+    color: {color:HighLight};
+}
+.ulbuttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.title {
+    color: {color:Text};
+    font-family: {text:GoogleFont};
+    font-size: 60px;
+    line-height: 1;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+.buffer {
+    padding-top: 50px;
+}
+.ulbuttons li {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.bio-pic {
+    height: auto;
+    width: 225px;
+    border-radius: 50%;
+    outline-radius: 50%;
+    margin: 2em;
+    padding: 0;
+    border: 10px solid #ff8f24;
+}
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post {
+    font-family: {text:GoogleFont3};
+    list-style: none;
+    border-radius: 1em;
+    background-color: {color:HeaderBackground};
+    width: 90%;
+    margin: 2em auto;
+    padding: 20px;
+    position: relative;
+    border: 5px solid {color:Accent};
+    box-shadow: -3px 3px 3px {color:Text};
+    color: {color:Text};
+    font-size: 22px;
+}
+.posttitle {
+    position: absolute;
+    left: -1em;
+    top: -2em;
+    border: 5px solid {color:HighLight};
+    width: max-content;
+    background-color: {color:HeaderBackground};
+    text-align: center;
+    border-radius: 1em;
+    padding: 0 1em;
+    text-decoration: none;
+    font-family: {text:GoogleFont2};
+    box-shadow: 3px 3px 6px {color:Text};
+}
+.post.photo img {
+    border-radius: 5%;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+.round {
+    width: 75%;
+    margin: auto;
+}
+.source {
+    padding: 5px;
+    margin-left: .5em;
+}
+.chat {
+    list-style: none;
+}
+.chat li {
+    margin: 5px;
+}
+.tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 16px;
+    opacity: 0.7;
+    color: {color:Accent};
+    
+}
+.tags li {
+    padding: 0 5px;
+}
+.tags a {
+    color: {color:HighLight};
+    opacity: 0.7;
+}
+.tags a:hover {
+    opacity: 1;
+    color: {color:Accent};
+    -webkit-transition: 0.3s;
+}
+body > iframe:first-child { 
+    display: none !important; 
+}
+
+</style>
+<!-- End CSS -->
+
+    <title>{Title}</title>
+  </head>
+<!-- Below is the Body
+The Navigation List is repeated so the flow will start below the fixed header wrapper. -->
+<body>
+ <header>
+  <div class="navigation">
+    <div class="buttons">
+      <h1 class="title">{Title}</h1>
+      <ul class="ulbuttons">
+        <li><a href="/">Blog</a></li>
+        <li><a href="/{text:Page1}">{text:Page1}</a></li>
+        <li><a href="/{text:Page2}">{text:Page2}</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+<div class="navigation2">
+    <div class="buttons">
+      <h1 class="title">{Title}</h1>
+      <ul class="ulbuttons">
+        <li><a href="/">Blog</a></li>
+        <li><a href="/{text:Page1}">{text:Page1}</a></li>
+        <li><a href="/{text:Page2}">{text:Page2}</a></li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+        <ul id="posts">
+            {block:Posts}
+<!-- Begin Text Post -->
+                {block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h3 class="posttitle">
+                                <a href="{Permalink}">
+                                    {Title} - 
+                                        {block:Date}
+                                            {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                        {/block:Date}
+                                </a>
+                            </h3>
+                        {/block:Title}
+                        <div class="buffer">
+                            {Body}
+                        </div>
+                        {block:HasTags}
+                            <ul class="tags">tags:  
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Text}
+<!-- End Text begin Photo Block -->
+                {block:Photo}
+                    <li class="post photo">
+                        <h3 class="posttitle"><div class="align">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}
+                                </a></div>
+                        </h3>
+                        <div class="center buffer">
+                            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                        </div>
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Photo}
+<!-- End Photo, Begin Panorama Post -->
+                {block:Panorama}
+                    <li class="post panorama">
+                        <h3 class="posttitle">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}
+                            </a>
+                        </h3>
+                        {LinkOpenTag}
+                        <div class="center buffer">
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        </div>
+                        {LinkCloseTag}
+                        {block:Caption}
+                            <div class="caption">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Panorama}
+<!-- End Panorama, Begin Photoset -->
+                {block:Photoset}
+                    <li class="post photoset">
+                        <h3 class="posttitle">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}
+                            </a>
+                        </h3>
+                        <div class="center buffer">
+                            {Photoset-500}
+                        </div>
+                        {block:Caption}
+                            <div class="caption">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Photoset}
+<!-- End Photoset, begin Quote --> 
+                {block:Quote}
+                    <li class="post quote">
+                        <h3 class="posttitle">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}
+                            </a>
+                        </h3>
+                        <div class="buffer">
+                            "{Quote}"
+                        </div>
+                        {block:Source}
+                            <div class="source">~ {Source}</div>
+                        {/block:Source}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Quote}
+<!-- End Quote, begin Link -->
+                {block:Link}
+                    <li class="post link">
+                        <h3 class="posttitle">
+                            <a href="{URL}" class="link">
+                                {Name} - 
+                                    {block:Date}
+                                        {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                    {/block:Date}
+                            </a>
+                        </h3>
+                        {block:Description}
+                            <div class="description buffer">{Description}</div>
+                        {/block:Description}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Link}
+<!-- End Link, Begin Chat --> 
+                {block:Chat}
+                    <li class="post chat">
+                        {block:Title}
+                            <h3 class="posttitle">
+                                <a href="{Permalink}">
+                                    {Title} - 
+                                        {block:Date}
+                                            {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                        {/block:Date}
+                                </a>
+                            </h3>
+                        {/block:Title}
+                        <div class="buffer">
+                            <ul class="chat">
+                                {block:Lines}
+                                    <li class="{Alt} user_{UserNumber}">
+                                        {block:Label}
+                                            <span class="label">
+                                                {Label}
+                                            </span>
+                                        {/block:Label}
+                                        {Line}
+                                    </li>
+                                {/block:Lines}
+                            </ul>
+                        </div>
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Chat}
+<!-- End Chat, Begin Video -->                 
+                {block:Video}
+                    <li class="post video">
+                        <h3 class="posttitle">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}    
+                            </a>
+                        </h3>
+                            <div class="center buffer">
+                                {Video-500}
+                            </div>
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Video}
+<!-- End Video, begin Audio -->                 
+                {block:Audio}
+                    <li class="post audio">
+                        <h3 class="posttitle">
+                            <a href="{Permalink}">
+                                {block:Date}
+                                    {MonthNumber}/{DayOfMonth}/{ShortYear}
+                                {/block:Date}
+                            </a>
+                        </h3>
+                        <div class="center buffer">
+                            {AudioEmbed}
+                        </div>
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                        {block:HasTags}
+                            <ul class="tags">tags:
+                                {block:Tags}
+                                    <li>
+                                        <a href="{TagURL}">{Tag}</a>
+                                    </li>
+                                {/block:Tags}
+                            </ul>
+                        {/block:HasTags}
+                    </li>
+                {/block:Audio}
+                {block:NoteCount}
+                {NoteCount}
+                {/block:NoteCount}
+                
+            {/block:Posts}
+        </ul>
+<!-- End Posts -->
+
+        <p id="footer" class="post">
+            {block:PreviousPage}
+                <a href="{PreviousPage}">Previous</a>
+            {/block:PreviousPage}
+            
+            | <a href="/">Blog</a> | <a href="/{text:Page1}">{text:Page1}</a> | <a href="/{text:Page2}">{text:Page2}</a> | <a href="/archive">Archive</a> |
+            
+            {block:NextPage}
+                <a href="{NextPage}">Next &#187;</a>
+            {/block:NextPage}
+
+            
+        </p>
+      
+  </body>
+</html>
