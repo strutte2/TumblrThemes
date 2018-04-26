@@ -3,12 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 
-<title>{Title}</title>  
-<link rel="shortcut icon" href="{Favicon}">
-<link rel="alternate" type="application/rss+xml" href="{RSS}">
-        {block:Description}
-            <meta name="description" content="{MetaDescription}" />
-        {/block:Description}
+<title>{Title}</title>
 
 <!-- User Defined Colors --> 
 <meta name="color:Text" content="#61473a" />
@@ -26,10 +21,6 @@
 <link href="https://fonts.googleapis.com/css?family={text:GoogleFont3}" rel="stylesheet">
 <!-- End User Fonts -->
 
-<!-- User Defined Pages --> 
-<meta name="text:Page1" content="Resume" />
-<meta name="text:Page2" content="Contact" /> 
-
 <!-- User Defined Font Sizes --> 
 <meta name="text:TitleFontSize" content="60px" />
 <meta name="text:HeaderFontSize" content="30px" />
@@ -39,12 +30,6 @@
 
 <!-- User Defined Booleans -->
 <meta name="if:ShowHeaderDate" content="1" />
-<!-- Note!
-
-If Use Custom Pages is enabled, the pages must be added on Tumblr's customize page via the "Add Page" feature at the bottom. The name of the page must match the name of the custom user input fields or the links will point to the incorrect page.
-
--->
-<meta name="if:UseCustomPages" content="1" /> 
 
 <!-- Begin CSS -->
 <style type="text/css">
@@ -258,7 +243,7 @@ h3 {
 body > iframe:first-child { 
     display: none !important; 
 }
-{CustomCSS}
+
 </style>
 <!-- End CSS -->
 
@@ -274,13 +259,12 @@ The Navigation List is repeated so the flow will dynamically start below the fix
                 <h1 class="title">
                     <a href="/" class="home">{Title}</a>
                 </h1>
-                {block:IfUseCustomPages}
+                {block:HasPages}
                 <ul class="ulbuttons">
                     <li><a href="/">Blog</a></li>
-                    <li><a href="/{text:Page1}">{text:Page1}</a></li>
-                    <li><a href="/{text:Page2}">{text:Page2}</a></li>
+                    {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
                 </ul>
-                {/block:IfUseCustomPages}
+                {/block:HasPages}
             </div>
         </div>
         <div class="navigation2">
@@ -289,13 +273,12 @@ The Navigation List is repeated so the flow will dynamically start below the fix
                     {Title}
                 </h1>
                 </a>
-                {block:IfUseCustomPages}
+                {block:HasPages}
                     <ul class="ulbuttons">
                         <li><a href="/">Blog</a></li>
-                        <li><a href="/{text:Page1}">{text:Page1}</a></li>
-                        <li><a href="/{text:Page2}">{text:Page2}</a></li>
+                            {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
                     </ul>
-              {/block:IfUseCustomPages}
+              {/block:HasPages}
             </div>
         </div>
     </header>
