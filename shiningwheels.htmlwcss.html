@@ -262,7 +262,9 @@ The Navigation List is repeated so the flow will dynamically start below the fix
                 {block:HasPages}
                 <ul class="ulbuttons">
                     <li><a href="/">Blog</a></li>
-                    {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+                    {block:Pages}
+                        <li><a href="{URL}">{Label}</a></li>
+                    {/block:Pages}
                 </ul>
                 {/block:HasPages}
             </div>
@@ -270,13 +272,14 @@ The Navigation List is repeated so the flow will dynamically start below the fix
         <div class="navigation2">
             <div class="buttons">
                 <h1 class="title">
-                    {Title}
+                    <a href="/" class"home">{Title}</a>
                 </h1>
-                </a>
                 {block:HasPages}
                     <ul class="ulbuttons">
                         <li><a href="/">Blog</a></li>
-                            {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+                        {block:Pages}
+                            <li><a href="{URL}">{Label}</a></li>
+                        {/block:Pages}
                     </ul>
               {/block:HasPages}
             </div>
